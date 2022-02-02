@@ -12,6 +12,7 @@ def menu():
                   "Espero ver-te em breve...\n")
 def game():
     jogada = 0
+    
     while ganhou() == 0:
         print("\nJogador ", jogada % 2 + 1)
         exibe()
@@ -33,19 +34,19 @@ def game():
             break
 def ganhou():
     # verificar linhas
-    for i in range(4):
-        soma = board[i][0] + board[i][1] + board[i][2] + board[i][3]
-        if soma == 4 or soma == -4:
+    for i in range(6):
+        soma = board[i][0] + board[i][1] + board[i][2] + board[i][3] + board[i][4] + board[i][5]
+        if soma == 6 or soma == -6:
             return 1
     # verificar colunas
-    for i in range(4):
-        soma = board[0][i] + board[1][i] + board[2][i] + board[3][i]
-        if soma == 4 or soma == -4:
+    for i in range(6):
+        soma = board[0][i] + board[1][i] + board[2][i] + board[3][i] +  board[4][i] + board[5][i]
+        if soma == 6 or soma == -6:
             return 1
     # verificar diagonais
-    diagonal1 = board[0][0] + board[1][1] + board[2][2]
-    diagonal2 = board[0][2] + board[1][1] + board[2][0]
-    if diagonal1 == 4 or diagonal1 == -4 or diagonal2 == 4 or diagonal2 == -4:
+    diagonal1 = board[0][0] + board[1][1] + board[2][2] + board[3][3] + board[4][4] + board[5][5]
+    diagonal2 = board[0][5] + board[1][4] + board[2][3] + board[3][2] + board[4][1] + board[5][0]
+    if diagonal1 == 6 or diagonal1 == -6 or diagonal2 == 6 or diagonal2 == -6:
         return 1
     return 0
 def exibe():
